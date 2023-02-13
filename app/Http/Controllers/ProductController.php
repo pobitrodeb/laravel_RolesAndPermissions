@@ -62,7 +62,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('products.show',compact('product'));
     }
 
     /**
@@ -73,7 +73,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('products.edit',compact('product'));
     }
 
     /**
@@ -83,9 +83,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+            'detail' => 'required',
+        ]);
+
+        $product->update($request->all());
+
+        return redirect()->route('products.index')
+                        ->with('success','Product information updated successfully');
     }
 
     /**
@@ -94,8 +102,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('products.index')
+                        ->with('success','Product information deleted successfully');
     }
 }
