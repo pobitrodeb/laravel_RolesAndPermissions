@@ -19,6 +19,8 @@ class CreateAdminUserSeeder extends Seeder
     public function run()
     {
         //Admin Seeder
+        // Email: admin@laraveltuts.com
+        // Password: password
         $user = User::create([
             'name' => 'Pobitro Debnath',
             'email' => 'admin@pobitrodeb.com',
