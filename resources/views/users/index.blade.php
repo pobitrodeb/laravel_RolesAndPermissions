@@ -46,5 +46,5 @@
 @endforeach
 </table>
 {!! $data->render() !!}
-<p class="text-center text-primary"><small>Tutorial by LaravelTuts.com</small></p>
+<p class="text-center text-primary"><small>Tutorial by Pobitro Debnath </small></p>
 @endsection
